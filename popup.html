@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jira Fast Access</title>
+  <style>
+    :root {
+      --bg-color: #111B21;
+      --text-color: #E9EDEF;
+      --input-bg: #202C33;
+      --button-bg: #1DA851;
+      --border-color: #374248;
+    }
+
+    .light-theme {
+      --bg-color: #FFFFFF;
+      --text-color: #1A1A1A;
+      --input-bg: #F0F2F5;
+      --button-bg: #1DA851;
+      --border-color: #CCCCCC;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      width: 300px;
+      padding: 10px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 1px;
+      gap: 10px;
+    }
+
+    #greeting {
+      margin: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: 100px; /* Tamanho aumentado */
+      font-weight: 750;
+      letter-spacing: -0.5px;
+      color: var(--text-color) !important;
+      line-height: 0.1;
+    }
+
+    .theme-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    #themeLabel {
+      font-size: 0.85em;
+      color: var(--text-color);
+      white-space: nowrap;
+      opacity: 0.9;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #1DA851;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    #codeInput {
+      width: 94%;
+      height: 150px;
+      margin-bottom: 10px;
+      background-color: var(--input-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 8px;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    #codeInput::placeholder {
+      color: #8696A0;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 12px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #25D366;
+    }
+
+    #errorMessage {
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 350px) {
+      #greeting {
+        font-size: 22px;
+      }
+      #themeLabel {
+        font-size: 0.75em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header-container">
+    <h1 id="greeting"></h1>
+    <div class="theme-switcher">
+      <span id="themeLabel">Modo Escuro</span>
+      <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+  <div id="errorMessage" style="color: red; margin-bottom: 10px;"></div>
+  <textarea id="codeInput" placeholder="Insira os códigos dos chamados, um por linha..."></textarea>
+  <button id="openButton">Abrir Chamados</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

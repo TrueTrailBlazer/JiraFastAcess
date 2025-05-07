@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Jira Fast Access",
-  "version": "12.0",
+  "version": "21.0",
   "description": "Abre múltiplos chamados no Jira de forma rápida e organizada!",
   "permissions": ["tabs", "storage"],
   "action": {
